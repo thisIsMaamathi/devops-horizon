@@ -26,6 +26,12 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@v3
+        with:
+           name: dist-node-${{ matrix['node-version'] }}
+           path: dist
+
   test:
     runs-on: ${{ matrix.os }}
     needs: build
